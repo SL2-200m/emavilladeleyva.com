@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XIV EMA Villa de Leyva - XIV EMA Villa de Leyva</title>
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: auto;
+      overflow: hidden;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    header {
+      background: #fff;
+      padding: 20px 0;
+      border-bottom: 1px solid #ddd;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo img {
+      max-width: 200px;
+      height: auto;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+    }
+
+    nav ul li {
+      margin-left: 20px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      padding: 5px 10px;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #c00; /* A highlight color */
+    }
+
+    .menu-toggle {
+      display: none; /* Hidden by default */
+      font-size: 24px;
+      background: none;
+      border: none;
+      color: #333;
+      cursor: pointer;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: #e9e1d6; /* A soft, antique-like color */
+      color: #333;
+      padding: 40px 0;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+
+    .hero h2 {
+      font-size: 1.5em;
+      font-weight: normal;
+      color: #555;
+    }
+
+    /* Main Content & Sections */
+    section {
+      padding: 40px 0;
+      background: #fff;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    section:last-child {
+        margin-bottom: 0;
+    }
+
+    section h2.section-title {
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 30px;
+      color: #c00;
+    }
+     section h3.section-subtitle {
+      text-align: center;
+      font-size: 1.2em;
+      margin-bottom: 20px;
+      color: #555;
+      font-style: italic;
+    }
+
+
+    /* Concert Cards */
+    .programacion-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .concierto-card {
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+    }
+    .concierto-card h3 {
+        font-size: 1.5em;
+        color: #c00;
+        margin-bottom: 10px;
+    }
+    .concierto-card h4 { /* Artist/Group */
+        font-size: 1.1em;
+        color: #555;
+        margin-bottom: 10px;
+        font-style: italic;
+    }
+    .concierto-card .concierto-meta {
+        margin-bottom: 15px;
+        font-size: 0.9em;
+    }
+    .concierto-card .concierto-meta p {
+        margin-bottom: 5px;
+    }
+    .concierto-card .concierto-meta strong {
+        color: #333;
+    }
+    .concierto-card .description {
+        margin-bottom: 15px;
+        font-size: 0.95em;
+        flex-grow: 1; /* Makes description take available space */
+    }
+     .concierto-card .note-image-link {
+        font-size: 0.9em;
+        color: #777;
+        margin-bottom: 15px;
+        font-style: italic;
+    }
+    .concierto-card .precios {
+        margin-bottom: 15px;
+        font-size: 0.9em;
+    }
+    .concierto-card .precios p {
+        margin-bottom: 3px;
+    }
+    .concierto-card .actions a {
+        display: inline-block;
+        background-color: #c00;
+        color: white;
+        padding: 10px 15px;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-right: 10px;
+        margin-bottom: 10px; /* For wrapping */
+        font-size: 0.9em;
+        transition: background-color 0.3s ease;
+    }
+    .concierto-card .actions a:hover {
+        background-color: #a00;
+    }
+    .concierto-card .actions a.notas {
+        background-color: #555;
+    }
+    .concierto-card .actions a.notas:hover {
+        background-color: #333;
+    }
+    .concierto-card.community-concert {
+        background-color: #e6ffe6; /* Light green for community concert */
+    }
+    .concierto-card.community-concert .actions a {
+        background-color: #008000; /* Green for community concert button */
+    }
+    .concierto-card.community-concert .actions a:hover {
+        background-color: #006400;
+    }
+
+
+    /* Guia de Compra */
+    .guia-compra {
+        text-align: center;
+    }
+    .guia-compra a {
+        display: inline-block;
+        background-color: #007bff;
+        color: white;
+        padding: 12px 25px;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 1.1em;
+        transition: background-color 0.3s ease;
+    }
+    .guia-compra a:hover {
+        background-color: #0056b3;
+    }
+
+    /* Social Media */
+    .social-media {
+      text-align: center;
+    }
+    .social-media h2 {
+      margin-bottom: 15px;
+    }
+    .social-media a {
+      margin: 0 10px;
+      color: #c00;
+      font-size: 1.1em;
+      text-decoration: none;
+    }
+    .social-media a:hover {
+      text-decoration: underline;
+    }
+
+    /* Banner Image */
+    .banner-image img {
+      width: 100%;
+      max-width: 800px; /* As specified */
+      height: auto;
+      border-radius: 8px;
+      margin: 20px auto; /* Centering */
+      display: block;
+    }
+
+    /* Contacto y Footer */
+    footer {
+      background: #333;
+      color: #fff;
+      padding: 30px 0;
+      text-align: center;
+    }
+    footer .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .contact-info, .como-llegar {
+        margin-bottom: 20px;
+    }
+    .contact-info h3, .como-llegar h3 {
+        color: #f4f4f4;
+        margin-bottom: 10px;
+    }
+    .contact-info ul {
+        list-style: none;
+    }
+    .contact-info li {
+        margin-bottom: 8px;
+    }
+    .contact-info a {
+        color: #aaa;
+        text-decoration: none;
+    }
+    .contact-info a:hover {
+        color: #fff;
+        text-decoration: underline;
+    }
+    .como-llegar p { /*Placeholder for map or directions */
+        color: #aaa;
+    }
+
+    /* Accessibility */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: #c00;
+      color: white;
+      padding: 8px;
+      z-index: 100;
+      text-decoration: none;
+    }
+    .skip-link:focus {
+      top: 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header .container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .logo {
+        margin-bottom: 15px;
+      }
+      .menu-toggle {
+        display: block;
+        position: absolute;
+        top: 25px;
+        right: 20px;
+      }
+      nav ul {
+        display: none; /* Hidden by default on mobile */
+        flex-direction: column;
+        width: 100%;
+        background-color: #fff; /* Ensure it's visible over content */
+        padding-top: 10px;
+      }
+      nav ul.active {
+        display: flex; /* Show when active */
+      }
+      nav ul li {
+        margin: 10px 0;
+        text-align: center;
+      }
+      .hero h1 {
+        font-size: 2em;
+      }
+      .hero h2 {
+        font-size: 1.2em;
+      }
+      .programacion-grid {
+        grid-template-columns: 1fr; /* Stack cards on mobile */
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Saltar al contenido</a>
+
+  <header>
+    <div class="container">
+      <div class="logo">
+        <a href="https://www.emavilladeleyva.com/">
+          <img src="images/logo-sujeto-a-derechos-removebg-preview.png" alt="XIV EMA Villa de Leyva Logo">
+        </a>
+      </div>
+      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">☰ Menu</button>
+      <nav>
+        <ul id="main-nav">
+          <li><a href="https://www.emavilladeleyva.com/inicio/">Inicio</a></li>
+          <li><a href="https://www.emavilladeleyva.com/" class="active">XIV EMA</a></li>
+          <li><a href="https://www.emavilladeleyva.com/nuestra-historia/">Nuestra historia</a></li>
+          <li><a href="https://www.emavilladeleyva.com/galeria/">Galería</a></li>
+          <li><a href="https://www.emavilladeleyva.com/quienes-somos/">Quiénes somos</a></li>
+          <li><a href="https://www.emavilladeleyva.com/contacto/">Contacto</a></li>
+          <li><a href="https://www.emavilladeleyva.com/nuestros-aliados/">Nuestros aliados</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero">
+      <div class="container">
+        <h1>¡Que placer! Volver a vivir la música antigua en Villa de Leyva</h1>
+        <h2>Semana Santa 5 al 8 de abril de 2023</h2>
+        <h2>Templo del claustro de San Agustin Instituto Humboldt</h2>
+      </div>
+    </section>
+
+    <section id="programacion">
+      <div class="container">
+        <h2 class="section-title">Programación</h2>
+        <h3 class="section-subtitle">Conozca sobre el concierto haciendo clic en la imagen (nota: imágenes individuales no provistas en el HTML original)</h3>
+        
+        <div class="programacion-grid">
+          <!-- Concierto 1 -->
+          <article class="concierto-card">
+            <h3>Suites y Partitas</h3>
+            <h4>Artista: Ignacio Prego - Clavecín</h4>
+            <p class="note-image-link">Conozca sobre el concierto haciendo clic en la imagen</p>
+            <p class="description">Descrito por la prensa internacional como uno de los clavecinistas más importantes de su generación, Ignacio Prego nos guía en este programa a través de un viaje por el género barroco de la colección de danzas para teclado, explorando los diferentes enfoques nacionales del género y un rango cronológico que va del barroco temprano de Froberger, al medio de Purcell y al gloriosamente maduro de Bach.</p>
+            <div class="concierto-meta">
+              <p><strong>Fecha:</strong> Miércoles 5 de abril</p>
+              <p><strong>Hora:</strong> 07:00 pm</p>
+            </div>
+            <div class="precios">
+              <p><strong>Sección 1 Filas 1 - 6:</strong> $ 80.000</p>
+              <p><strong>Sección 2 Filas 7 - 15:</strong> $ 60.000</p>
+              <p><strong>Sección 3 Filas 16 - 22:</strong> $ 50.000</p>
+            </div>
+            <div class="actions">
+              <a href="https://www.emavilladeleyva.com/wp-content/uploads/2023/03/Sonatas-y-Partitas.pdf" class="notas" target="_blank" rel="noopener noreferrer">Notas al programa</a>
+              <a href="https://api.whatsapp.com/send?phone=+573102629095&text=Hola%20quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20compra%20de%20bonos%20" target="_blank" rel="noopener noreferrer">Comprar ahora</a>
+            </div>
+          </article>
+
+          <!-- Concierto 2 -->
+          <article class="concierto-card">
+            <h3>Le Nuove Musiche</h3>
+            <h4>Agrupación: Los Ministriles de la Nueva Granada y Esfera Armoniosa</h4>
+            <p class="note-image-link">Conozca sobre el concierto haciendo clic en la imagen</p>
+            <p class="description">Esta emocionante colaboración entre dos grupos de importante trayectoria nos propone un ambicioso y rico panorama de la efervescencia intelectual, teológica, estética y política del siglo XVII. Exploraremos los atrevidos experimentos de las nuove musiche que se esforzaron por reformular la relación entre texto y música, rompiendo las sólidas líneas de la polifonía renacentista con una explosión de ideas y colores nuevos.</p>
+             <div class="concierto-meta">
+              <p><strong>Fecha:</strong> Jueves 6 de abril</p>
+              <p><strong>Hora:</strong> 05:00 pm</p>
+            </div>
+            <div class="precios">
+              <p><strong>Sección 1 Filas 1 - 6:</strong> $ 75.000</p>
+              <p><strong>Sección 2 Filas 7 - 15:</strong> $ 55.000</p>
+              <p><strong>Sección 3 Filas 16 - 22:</strong> $ 45.000</p>
+            </div>
+            <div class="actions">
+              <a href="https://www.emavilladeleyva.com/wp-content/uploads/2023/03/Le-Nuove-Musiche.pdf" class="notas" target="_blank" rel="noopener noreferrer">Notas al programa</a>
+              <a href="https://api.whatsapp.com/send?phone=+573102629095&text=Hola%20quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20compra%20de%20bonos%20" target="_blank" rel="noopener noreferrer">Comprar ahora</a>
+            </div>
+          </article>
+
+          <!-- Concierto 3 -->
+          <article class="concierto-card">
+            <h3>Oficios de Tinieblas</h3>
+            <h4>Agrupación: Los Gustos Extranjeros</h4>
+            <p class="note-image-link">Conozca sobre el concierto haciendo clic en la imagen</p>
+            <p class="description">Esta agrupación nos invita a una experiencia inmersiva en una de las prácticas espirituales históricas de la Semana Santa. El oficio de tinieblas consistía en oración nocturna durante los tres días de la pasión de Jesús, con iluminación decreciente que culmina en un acto de lamento musical en total oscuridad. Las lecciones de tinieblas de François Couperin presentadas aquí usan el texto de las Lamentaciones de Jeremías, en las que el profeta se duele por la destrucción babilonia de Jerusalén. El poder expresivo de la música de Couperin en la oscuridad nos dejará transformados.</p>
+            <div class="concierto-meta">
+              <p><strong>Fecha:</strong> Jueves 6 de abril</p>
+              <p><strong>Hora:</strong> 08:00 pm</p>
+            </div>
+            <div class="precios">
+              <p><strong>Sección 1 Filas 1 - 6:</strong> $ 80.000</p>
+              <p><strong>Sección 2 Filas 7 - 15:</strong> $ 60.000</p>
+              <p><strong>Sección 3 Filas 16 - 22:</strong> $ 50.000</p>
+            </div>
+            <div class="actions">
+              <a href="https://www.emavilladeleyva.com/wp-content/uploads/2023/03/Oficios-de-Tinieblas.pdf" class="notas" target="_blank" rel="noopener noreferrer">Notas al programa</a>
+              <a href="https://api.whatsapp.com/send?phone=+573102629095&text=Hola%20quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20compra%20de%20bonos%20" target="_blank" rel="noopener noreferrer">Comprar ahora</a>
+            </div>
+          </article>
+
+          <!-- Concierto 4 -->
+          <article class="concierto-card">
+            <h3>Sonatas del Rosario de H.Biber</h3>
+            <h4>Agrupación: Armonía Scordata</h4>
+            <p class="note-image-link">Conozca sobre el concierto haciendo clic en la imagen</p>
+            <p class="description">Esta reconocida agrupación local nos presenta una selección de las Sonatas del Rosario de Biber. Esta monumental colección sigue la estructura precisa de los misterios "gozosos", "dolorosos" y "gloriosos" del rosario cristiano, símbolo esencial de la plegaria. La selección de misterios que nos propone Armonia Scordata cubre el arco completo de la vida de Jesús, recordándonos el sentido de la fiesta pascual.</p>
+            <div class="concierto-meta">
+              <p><strong>Fecha:</strong> Viernes 7 de abril</p>
+              <p><strong>Hora:</strong> 05:00 pm</p>
+            </div>
+            <div class="precios">
+              <p><strong>Sección 1 Filas 1 - 6:</strong> $ 75.000</p>
+              <p><strong>Sección 2 Filas 7 - 15:</strong> $ 55.000</p>
+              <p><strong>Sección 3 Filas 16 - 22:</strong> $45.000</p>
+            </div>
+            <div class="actions">
+              <a href="https://www.emavilladeleyva.com/wp-content/uploads/2023/03/Sonatas-del-Rosario-de-H.Biber_.pdf" class="notas" target="_blank" rel="noopener noreferrer">Notas al programa</a>
+              <a href="https://api.whatsapp.com/send?phone=+573102629095&text=Hola%20quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20compra%20de%20bonos%20" target="_blank" rel="noopener noreferrer">Comprar ahora</a>
+            </div>
+          </article>
+
+          <!-- Concierto 5 -->
+          <article class="concierto-card">
+            <h3>Cancioneros de Huehuetenango</h3>
+            <h4>Artistas: Ariel Abramovich y Jonatan Alvarado</h4>
+            <p class="note-image-link">Conozca sobre el concierto haciendo clic en la imagen</p>
+            <p class="description">Este dúo de aclamación internacional nos presenta un repertorio de singular belleza y misterio contenido en manuscritos del siglo XVI preservados en el departamento de Huehuetenango en Guatemala. El programa propone un diálogo entre este repertorio americanizado con colecciones europeas de la época. Para no perdérselo.</p>
+            <div class="concierto-meta">
+              <p><strong>Fecha:</strong> Viernes 7 de abril</p>
+              <p><strong>Hora:</strong> 08:00 pm</p>
+            </div>
+            <div class="precios">
+              <p><strong>Sección 1 Filas 1 - 6:</strong> $ 90.000</p>
+              <p><strong>Sección 2 Filas 7 - 15:</strong> $ 70.000</p>
+              <p><strong>Sección 3 Filas 16 - 22:</strong> $ 55.000</p>
+            </div>
+            <div class="actions">
+              <a href="https://www.emavilladeleyva.com/wp-content/uploads/2023/03/Cancioneros-de-Huehuetenango.pdf" class="notas" target="_blank" rel="noopener noreferrer">Notas al programa</a>
+              <a href="https://api.whatsapp.com/send?phone=+573102629095&text=Hola%20quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20compra%20de%20bonos%20" target="_blank" rel="noopener noreferrer">Comprar ahora</a>
+            </div>
+          </article>
+
+          <!-- Concierto 6 - Community -->
+          <article class="concierto-card community-concert">
+            <h3>El tiple colombiano como instrumento solista</h3>
+            <h4>Agrupación: Fabián Gallón y Lucas Saboya</h4>
+            <p class="note-image-link">Conozca sobre el concierto haciendo clic en la imagen</p>
+            <p class="description">Este virtuoso dúo propone una revaluación del papel y el repertorio del tiple, cuestionando el rol que se la le impuesto como instrumento nacional para explorar su rico trasfondo histórico y el proceso que durante la modernidad lo lleva a pasar de su papel tradicional de instrumento acompañante a solista. Un concierto abierto y gratuito para la comunidad, para reconocernos como nación en nuestra música.</p>
+            <div class="concierto-meta">
+              <p><strong>Fecha:</strong> Sábado 8 de abril</p>
+              <p><strong>Hora:</strong> 11:00 am</p>
+              <p><strong>Concierto de la comunidad</strong></p>
+              <p><strong>Entrada Libre</strong></p>
+            </div>
+            <div class="actions">
+              <a href="https://www.emavilladeleyva.com/wp-content/uploads/2023/03/El-tiple-colombiano-como-instrumento-solista.pdf" class="notas" target="_blank" rel="noopener noreferrer">Notas al programa</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="guia-compra">
+      <div class="container">
+        <a href="https://www.emavilladeleyva.com/wp-content/uploads/2023/03/Pasos-para-compra-de-bonos-de-apoyo-copia.pdf" target="_blank" rel="noopener noreferrer">Guía de compra</a>
+      </div>
+    </section>
+
+    <section class="social-media">
+      <div class="container">
+        <h2>Síguenos en:</h2>
+        <p>
+          <a href="https://twitter.com/MusicAntiguaVL" target="_blank" rel="noopener noreferrer">Twitter</a> |
+          <a href="https://www.facebook.com/emavilladeleyva" target="_blank" rel="noopener noreferrer">Facebook</a> |
+          <a href="https://www.instagram.com/emavilladeleyva/" target="_blank" rel="noopener noreferrer">Instagram</a> |
+          <a href="https://www.youtube.com/@encuentrodemusicaantiguaen739" target="_blank" rel="noopener noreferrer">Youtube</a>
+        </p>
+      </div>
+    </section>
+
+    <section class="banner-image">
+      <div class="container">
+        <img src="https://www.emavilladeleyva.com/wp-content/uploads/2023/03/WhatsApp-Image-2023-03-15-at-17.50.02-1024x409.jpeg" alt="Banner promocional del evento">
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="contact-info">
+        <h3>Contacto:</h3>
+        <ul>
+          <li>+57 310 262 9095</li>
+          <li>
+            <a href="mailto:fundacionamigosdelsilencio@gmail.com">fundacionamigosdelsilencio@gmail.com</a>
+          </li>
+          <li>
+            <a href="https://www.google.com/maps/place/Instituto+Von+Humboldt/@5.6344689,-73.5225599,17z/data=!4m14!1m7!3m6!1s0x8e41d70c45618bfb:0x34398ea9fb0f238d!2sInstituto+Von+Humboldt!8m2!3d5.6344636!4d-73.5203659!16s%2Fg%2F11c20bxcgm!3m5!1s0x8e41d70c45618bfb:0x34398ea9fb0f238d!8m2!3d5.6344636!4d-73.5203659!16s%2Fg%2F11c20bxcgm" target="_blank" rel="noopener noreferrer">Templo del claustro de San Agustín (Instituto Humboldt)</a>
+          </li>
+        </ul>
+      </div>
+      <div class="como-llegar">
+        <h3>¿Cómo llegar?</h3>
+        <p>(Información de cómo llegar o enlace a mapa aquí)</p>
+      </div>
+      <p>© 2023-2024 XIV EMA Villa de Leyva. Contenido original de emavilladeleyva.com.</p>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mainNav = document.querySelector('#main-nav');
+
+    menuToggle.addEventListener('click', function() {
+      const isExpanded = mainNav.classList.toggle('active');
+      menuToggle.setAttribute('aria-expanded', isExpanded);
+      if (isExpanded) {
+        menuToggle.innerHTML = '× Cerrar'; // Change to close icon/text
+      } else {
+        menuToggle.innerHTML = '☰ Menu'; // Change back to hamburger icon/text
+      }
+    });
+  </script>
+</body>
+</html>
